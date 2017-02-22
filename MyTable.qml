@@ -11,12 +11,17 @@ Item {
         border.color: "gray"
         border.width: 1
         color: "transparent"
-        Component.onCompleted: lh.addcolumn()
-        Row {
+        Component.onCompleted: {
+            lh.addcolumn()
+            lh.addcolumn()
+            lh.addcolumn()
+            lh.delcolumn(0)
+        }
+        Row { // заголовок таблицы
+            id: header
             anchors.margins: 5
             anchors.left: parent.left
             anchors.top: parent.top
-            id: header
             MyHeaderItem {
                 width: 90
                 height: 80
@@ -53,7 +58,49 @@ Item {
                 height: 80
                 text: "<p>Среднее</p><p>арифм.</p><p>значение</p><p>ед.</p>"
             }
+        } //конец заголовка
+        Column {
+            id: datarows
+            anchors.leftMargin:  5
+            anchors.left: parent.left
+            anchors.top: header.bottom
+            anchors.right: parent.right
+            Row {
+                id: dataline
+                width: header.width
+                height: 40
 
+                MyCellInt {
+                    celldate: "0"
+                    celltype: 1
+                    width: 90
+                    height: dataline.height
+                }
+                MyCellInt {
+                    celldate: "1+пл."
+                    celltype: 0
+                    width: 90
+                    height: dataline.height
+                }
+                MyCellInt {
+                    celldate: "1321,5"
+                    celltype: 2
+                    width: 90
+                    height: dataline.height
+                }
+                MyCellInt {
+                    celldate: "-"
+                    celltype: -1
+                    width: 90
+                    height: dataline.height
+                }
+                MyCellInt {
+                    celldate: "-"
+                    celltype: -1
+                    width: 90
+                    height: dataline.height
+                }
+            }
         }
     }
 

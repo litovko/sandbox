@@ -4,5 +4,6 @@
         <file>MyTable.qml</file>
         <file>MyHeaderItem.qml</file>
         <file>MyLongHeader.qml</file>
+        <file>MyCellInt.qml</file>
     </qresource>
 </RCC>
