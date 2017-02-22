@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MyTable.qml</file>
+        <file>MyHeaderItem.qml</file>
+        <file>MyLongHeader.qml</file>
+    </qresource>
+</RCC>
