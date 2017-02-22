@@ -52,6 +52,9 @@ Item {
                 width: 300
                 height: 80
                 text1: "Отсчеты по индикатору ("+count+" шт.)"
+                onCountChanged: {
+                    print("count changed")
+                }
             }
             MyHeaderItem {
                 width: 90
@@ -94,12 +97,11 @@ Item {
                     width: 90
                     height: dataline.height
                 }
-                MyCellInt {
-                    celldate: "-"
-                    celltype: -1
-                    width: 90
-                    height: dataline.height
-                }
+
+            }
+            MyCellLine{
+                width: header.width
+                height: 40
             }
         }
     }
