@@ -4,6 +4,20 @@ import QtQuick.Controls.Styles 1.4
 
 Item {
     id: mt
+    function addcolumn(){
+        for(var i=0; i<datarows.children.length;i++) {
+            datarows.children[i].addcolumn();
+        }
+        lh.addcolumn();
+    }
+    function addrow(){
+        var newObject = Qt.createQmlObject(
+            'MyCellLine {
+                width: header.width
+                height: 40
+            }',datarows, "dynamicRow");
+    }
+
     Rectangle {
         id: rect
         anchors.fill: parent
@@ -11,12 +25,7 @@ Item {
         border.color: "gray"
         border.width: 1
         color: "transparent"
-        Component.onCompleted: {
-            lh.addcolumn()
-            lh.addcolumn()
-            lh.addcolumn()
-            lh.delcolumn(0)
-        }
+
         Row { // заголовок таблицы
             id: header
             anchors.margins: 5
@@ -53,7 +62,7 @@ Item {
                 height: 80
                 text1: "Отсчеты по индикатору ("+count+" шт.)"
                 onCountChanged: {
-                    print("count changed")
+                    print("count changed="+count)
                 }
             }
             MyHeaderItem {
@@ -68,36 +77,10 @@ Item {
             anchors.left: parent.left
             anchors.top: header.bottom
             anchors.right: parent.right
-            Row {
-                id: dataline
+
+            MyCellLine{
                 width: header.width
                 height: 40
-
-                MyCellInt {
-                    celldate: "0"
-                    celltype: 1
-                    width: 90
-                    height: dataline.height
-                }
-                MyCellInt {
-                    celldate: "1+пл."
-                    celltype: 0
-                    width: 90
-                    height: dataline.height
-                }
-                MyCellInt {
-                    celldate: "1321,5"
-                    celltype: 2
-                    width: 90
-                    height: dataline.height
-                }
-                MyCellInt {
-                    celldate: "-"
-                    celltype: -1
-                    width: 90
-                    height: dataline.height
-                }
-
             }
             MyCellLine{
                 width: header.width

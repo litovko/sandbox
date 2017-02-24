@@ -36,6 +36,7 @@ ApplicationWindow {
         anchors.fill: parent
         MyTable {
             anchors.fill: parent
+            Component.onCompleted:  {addrow();/*addcolumn()*/}
         }
     }
 

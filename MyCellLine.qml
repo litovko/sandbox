@@ -5,17 +5,13 @@ Item {
     property int celwidth: 90
     property real longcelwidth: 300
     property int count: 1
-    function addcolumn(dat) {
-
-        var newObject = Qt.createQmlObject(
-            'MyCellInt {
-                celldate: "'+dat+'"
-                celltype: -1
-                width: '+dl.longcelwidth/dl.count+'
-                height: dataline.height
-            }',dataline, "dynamicCell");
+    function addcolumn(){
+        dc.addcolumn("-")
     }
-    Component.onCompleted: addcolumn("+")
+    function delcolumn(num){
+        dc.delcolumn(num)
+    }
+    //Component.onCompleted: addcolumn("+")
     Row {
         id: dataline
         width: dl.width
@@ -43,6 +39,17 @@ Item {
             celldate: "-"
             celltype: -1
             width: celwidth
+            height: dataline.height
+        }
+        MyCellInt {
+            celldate: "-"
+            celltype: -1
+            width: celwidth
+            height: dataline.height
+        }
+        MyDataCells{
+            id: dc
+            width: longcelwidth
             height: dataline.height
         }
         MyCellInt {

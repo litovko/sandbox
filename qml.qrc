@@ -6,5 +6,6 @@
         <file>MyLongHeader.qml</file>
         <file>MyCellInt.qml</file>
         <file>MyCellLine.qml</file>
+        <file>MyDataCells.qml</file>
     </qresource>
 </RCC>
